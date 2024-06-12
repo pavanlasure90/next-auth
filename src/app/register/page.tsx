@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-const AdminRegister = () => {
+const Register = () => {
     const [error, setError] = useState('')
     const router = useRouter()
 
@@ -36,7 +36,7 @@ const AdminRegister = () => {
         }
 
         try {
-            const res = await fetch('/api/adminregister', {
+            const res = await fetch('/api/register', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const AdminRegister = () => {
             }
             if (res.status === 200) {
                 setError("")
-                router.push('/adminlogin');
+                router.push('/login');
             }
         } catch (error) {
             setError("Error, Try again")
@@ -63,7 +63,7 @@ const AdminRegister = () => {
     return (
         <div className='flex min-h-screen flex-col items-center justify-between p-24'>
             <div className='bg-[#757474] p-8 rounded shadow-md w-96'>
-                <h1 className='text-4xl text-center font-semibold mb-8 text-white'>Admin Register</h1>
+                <h1 className='text-4xl text-center font-semibold mb-8 text-white'>Register</h1>
                 <form onSubmit={handleSubmit}>
                     <input type="text"
                         className='w-full border border-grey-300 rounded text-black px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black'
@@ -84,8 +84,8 @@ const AdminRegister = () => {
                     <button type='submit' className='w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600'>Register</button>
                 </form>
                 <div className='block text-center text-gray-500 mt-4'>-OR-</div>
-                <p className='block text-center text-white'>Already have an admin account?</p>
-                <Link className='block text-center text-blue-500 hover:underline mt-2' href='/adminlogin'>
+                <p className='block text-center text-white'>Already have an account?</p>
+                <Link className='block text-center text-blue-500 hover:underline mt-2' href='/login'>
                     Login
                 </Link>
             </div>
@@ -93,4 +93,4 @@ const AdminRegister = () => {
     )
 }
 
-export default AdminRegister
+export default Register

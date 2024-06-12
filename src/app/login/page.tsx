@@ -70,8 +70,8 @@ const Login = () => {
                 </form>
                 <div className="block text-center text-gray-500 mt-4">-OR-</div>
                 <p className="block text-center text-white">Don't have an account yet?</p>
-                <Link href="/register">
-                    <span className="block text-center text-blue-500 hover:underline mt-2">Register</span>
+                <Link href="/register"
+                    className="block text-center text-blue-500 hover:underline mt-2">Register
                 </Link>
             </div>
         </div>
