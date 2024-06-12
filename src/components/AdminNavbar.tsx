@@ -11,10 +11,10 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className='flex gap-10'>
-                <Link href='/login'>
+                <Link href='/adminlogin'>
                 <li>Login</li>
                 </Link>
-                <Link href='/register'>
+                <Link href='/adminregister'>
                 <li>Register</li>
                 </Link>
                 <Link href='/'>

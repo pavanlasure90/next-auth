@@ -9,8 +9,6 @@ const AdminsPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("calling");
-    
     fetchUsers();
   }, []);
 
@@ -37,53 +35,52 @@ const AdminsPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       {/* Navbar */}
       <AdminNavbar />
 
       {/* Main content */}
-      <div className="flex flex-grow w-full">
-        {/* AdminsPage content */}
-        <div className="flex-grow p-4">
-          <h1 className="text-2xl text-center justify-center font-bold">
-            Users
-          </h1>
-          <table className="min-w-full bg-white">
-            <thead>
-              <tr>
-                <th className="py-2">Name</th>
-                <th className="py-2">Email</th>
-                <th className="py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user: any) => (
-                <tr key={user._id}>
-                  <td className="py-2">{user.name}</td>
-                  <td className="py-2">{user.email}</td>
-                  <td className="py-2">
-                    <button
-                      className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
-                      onClick={() => handleEdit(user._id)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="bg-red-500 text-white px-4 py-2 rounded"
-                      onClick={() => handleDelete(user._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+      <div className="flex flex-grow w-full justify-center">
+        <div className="container mx-auto p-4">
+          <h1 className="text-2xl font-bold mb-4 text-center">Users</h1>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white rounded-lg shadow-md">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="py-2 px-4 text-left">Name</th>
+                  <th className="py-2 px-4 text-left">Email</th>
+                  <th className="py-2 px-4 text-left">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {users.map((user: any) => (
+                  <tr key={user._id} className="border-b">
+                    <td className="py-2 px-4">{user.name}</td>
+                    <td className="py-2 px-4">{user.email}</td>
+                    <td className="py-2 px-4 flex space-x-2">
+                      <button
+                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+                        onClick={() => handleEdit(user._id)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                        onClick={() => handleDelete(user._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="bg-gray-200 h-16 flex items-center justify-center w-full">
+      <div className="bg-gray-200 h-16 flex items-center justify-center w-full mt-4">
         Footer
       </div>
     </div>

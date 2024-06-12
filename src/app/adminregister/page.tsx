@@ -41,17 +41,6 @@ const AdminRegister = () => {
         email,
         password,
       });
-      // const res = await fetch('/api/adminapi/adminRegister', {
-      //     method: "POST",
-      //     headers: {
-      //         "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //         name,
-      //         email,
-      //         password,
-      //     })
-      // })
       if (res.status === 400) {
         setError("This email is already registered");
       }
@@ -92,8 +81,9 @@ const AdminRegister = () => {
           />
           {error && <p className="text-red-600 text-[16px] mb-4">{error}</p>}
           <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            type="submit" 
+            disabled={true} // other users cannot be register with disabled true
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600" 
           >
             Register
           </button>
