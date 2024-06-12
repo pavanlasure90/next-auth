@@ -1,15 +1,13 @@
 "use client"
+import Navbar from '@/components/Navbar'
 import React from 'react'
-import Navbar from '@/components/Navbar';
 import HomeIcon from '@mui/icons-material/Home';
 import MailIcon from '@mui/icons-material/Mail';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
-const AdminsPage = () => {
-
-  const router = useRouter()
+const usersHomePage = () => {
+  const router = useRouter();
 
   const handleHome = () => {
     router.push('/userspage/user-details/home');
@@ -22,7 +20,6 @@ const AdminsPage = () => {
   const handleLeave = () => {
     router.push('/userspage/user-details/leave');
   };
-
 
   return (
     <div className="flex flex-col h-screen">
@@ -48,11 +45,9 @@ const AdminsPage = () => {
           </div>
         </div>
 
-        {/* dashboardPage content */}
+        {/* UsersPage content */}
         <div className="flex-grow p-4 text-center justify-center">
-          <Link href= '/dashboard'>
-              <button>Dashboard</button>
-          </Link>
+          Users Home Page
         </div>
       </div>
       
@@ -64,7 +59,4 @@ const AdminsPage = () => {
   );
 };
 
-export default AdminsPage
-
-
-
+export default usersHomePage;

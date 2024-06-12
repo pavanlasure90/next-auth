@@ -10,7 +10,7 @@ const Home = () => {
   };
 
   const handleAdminClick = () => {
-    router.push("/adminspage");
+    router.push("/adminlogin");
   };
 
   return (
