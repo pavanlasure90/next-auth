@@ -24,29 +24,28 @@ const LeavePage = () => {
   return (
     <div className="flex flex-col h-screen">
       {/* Navbar */}
-      <Navbar />
+      <div className="sticky top-0 z-10">
+        <Navbar />
+      </div>
 
       {/* Main content */}
-      <div className="flex flex-grow w-full">
+      <div className="flex flex-grow overflow-auto">
         {/* Sidebar */}
-        <div className="bg-gray-200 w-auto p-4 h-full flex flex-col">
+        <div className="bg-gray-200 w-20 p-4 h-full flex flex-col sticky top-0">
           {/* Sidebar content */}
           <div className="flex items-center mb-4 cursor-pointer" onClick={handleHome}>
             <HomeIcon className="h-6 w-6 text-gray-800 mr-2" />
-            <span>Home</span>
           </div>
           <div className="flex items-center mb-4 cursor-pointer" onClick={handleContact}>
             <MailIcon className="h-6 w-6 text-gray-800 mr-2" />
-            <span>Contact</span>
           </div>
           <div className="flex items-center cursor-pointer" onClick={handleLeave}>
             <ExitToAppIcon className="h-6 w-6 text-gray-800 mr-2" />
-            <span>Leave</span>
           </div>
         </div>
 
         {/* LeavePage content */}
-        <div className="flex-grow p-4 text-center justify-center">
+        <div className="flex-grow p-4">
           Leave Page
         </div>
       </div>
