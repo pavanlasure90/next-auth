@@ -4,18 +4,18 @@ import Link from 'next/link'
 const Navbar = () => {
   return (
     <div>
-        <ul className='flex justify-between p-5 items-center bg-slate-600 ' >
+        <ul className='flex justify-between p-5 items-center bg-slate-600 text-white ' >
             <div>
                 <Link href='/'>
-                <li>Home</li>
+                <li>Thunder Shop</li>
                 </Link>
             </div>
             <div className='flex gap-10'>
-                <Link href='/login'>
-                <li>Login</li>
+                <Link href='/userspage'>
+                <li>Home</li>
                 </Link>
-                <Link href='/register'>
-                <li>Register</li>
+                <Link href='/userspage/user-details/cart'>
+                <li>Cart</li>
                 </Link>
                 <Link href='/'>
                 <li>Logout</li>

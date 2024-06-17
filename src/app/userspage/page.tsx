@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HomeIcon from "@mui/icons-material/Home";
@@ -6,6 +6,13 @@ import MailIcon from "@mui/icons-material/Mail";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { Rating } from "@mui/material";
+import Button from "@mui/material/Button";
+
+interface Rating {
+  rate: number;
+  count: number;
+}
 
 interface Product {
   id: number;
@@ -13,6 +20,7 @@ interface Product {
   description: string;
   image: string;
   price: number;
+  rating: Rating;
 }
 
 const UsersPage: React.FC = () => {
@@ -31,6 +39,17 @@ const UsersPage: React.FC = () => {
 
     fetchProducts();
   }, []);
+
+  const handleAddToCart = async (productId: number) => {
+    try {
+      const userId = 'YOUR_USER_ID'; // Replace with the actual user ID from your authentication logic
+      const response = await axios.post('/api/add-to-cart', { userId, productId });
+      console.log(response.data);
+      // You can add additional logic here to update the UI or provide feedback to the user
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
+  };
 
   const handleHome = () => {
     router.push("/userspage/user-details/home");
@@ -85,6 +104,9 @@ const UsersPage: React.FC = () => {
                 <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
                 <p className="text-gray-700 mb-4">{product.description}</p>
                 <p className="text-green-600 font-bold">${product.price}</p>
+                <Rating value={product.rating.rate} precision={0.1} readOnly />
+                <p className="text-gray-600 text-sm">({product.rating.count} reviews)</p>
+                <Button variant="outlined" onClick={() => handleAddToCart(product.id)}>Add to Cart</Button>
               </div>
             ))}
           </div>
